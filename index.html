@@ -90,23 +90,26 @@
         <audio id="koppieAudio" src="assets/koppie/spirit-of-the-koppie-theme.mp3" preload="auto"></audio>
 
         <script>
-            // Get references to the model, tap image, and audio elements
-            const model = document.querySelector("#earthRunestone");
-            const tapImage = model.querySelector("#tapToStart");
-            const sound = document.querySelector("#earthGuardianAudio");
+            // Wait for the A-Frame scene to finish loading
+            document.querySelector("a-scene").addEventListener("loaded", function () {
+                // Get references to the model, tap image, and audio elements
+                const model = document.querySelector("#earthRunestone");
+                const tapImage = model.querySelector("#tapToStart");
+                const sound = document.querySelector("#earthGuardianAudio");
 
-            // Add a click event listener to the model
-            model.addEventListener("click", (e) => {
-                // Swap the runestone model with the guardian model
-                model.setAttribute("gltf-model", "assets/earth/earth-guardian.glb");
-                model.setAttribute("scale", "3 3 3");
-                model.setAttribute("animation-mixer", "");
+                // Add a click event listener to the model
+                model.addEventListener("click", (e) => {
+                    // Swap the runestone model with the guardian model
+                    model.setAttribute("gltf-model", "assets/earth/earth-guardian.glb");
+                    model.setAttribute("scale", "3 3 3");
+                    model.setAttribute("animation-mixer", "");
 
-                // Hide the "Tap to Start" prompt
-                tapImage.setAttribute("visible", "false");
+                    // Hide the "Tap to Start" prompt
+                    tapImage.setAttribute("visible", "false");
 
-                // Play the guardian's theme music
-                sound.play();
+                    // Play the guardian's theme music
+                    sound.play();
+                });
             });
         </script>
     </body>
