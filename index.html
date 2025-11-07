@@ -15,12 +15,17 @@
     </head>
     <body>
         <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-            <a-marker type="pattern" url="pattern2.patt">
-                <a-entity id="mymodel" gltf-model="earth-runestone.glb" rotation="-90 0 0" scale="1 1 1" class="clickable">
+            <a-marker preset="hiro">
+                <a-entity
+                    id="mymodel"
+                    gltf-model="assets/earth/earth-runestone.glb"
+                    rotation="-90 0 0"
+                    scale="1 1 1"
+                    class="clickable">
                     <!-- "Tap to Start" prompt -->
                     <a-image
                         id="tapToStart"
-                        src="tap-to-start.svg"
+                        src="assets/tap-to-start.svg"
                         position="0 1.5 0"
                         width="1"
                         height="1"
@@ -32,7 +37,7 @@
         </a-scene>
 
         <!-- HTML audio element for the guardian's theme music -->
-        <audio id="guardianAudio" src="earth-guardian-theme.mp3" preload="auto"></audio>
+        <audio id="guardianAudio" src="assets/earth-guardian-theme.mp3" preload="auto"></audio>
 
         <script>
             // Get references to the model, tap image, and audio elements
@@ -43,7 +48,7 @@
             // Add a click event listener to the model
             model.addEventListener("click", (e) => {
                 // Swap the runestone model with the guardian model
-                model.setAttribute("gltf-model", "earth-guardian.glb");
+                model.setAttribute("gltf-model", "assets/earth/earth-guardian.glb");
                 model.setAttribute("scale", "3 3 3");
                 model.setAttribute("animation-mixer", "");
 
